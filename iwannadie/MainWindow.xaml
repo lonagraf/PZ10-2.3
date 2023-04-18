@@ -1,0 +1,46 @@
+﻿<Window x:Class="iwannadie.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" />
+        <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed" />
+    </Window.CommandBindings>
+
+    <StackPanel>
+        <ToolBar Height="42">
+            <Button Command="ApplicationCommands.Open">
+                <Image Height="30" Source="/upload.png" Width="34" RenderTransformOrigin="0.5,0.5"/>
+            </Button>
+            <Button Command="ApplicationCommands.Save">
+                <Image Height="30" Source="/save.png" Width="35" RenderTransformOrigin="0.5,0.5"/>
+            </Button>
+            <Separator/>
+            <ToggleButton Command="EditingCommands.ToggleBold" Name="btnBold">
+                <Image Height="30" Source="/bold.png"  Width="31"/>
+            </ToggleButton>
+            <ToggleButton Command="EditingCommands.ToggleItalic" Name="btnItalic">
+                <Image Height="30" Source="/italic.png"  Width="30"/>
+            </ToggleButton>
+            <ToggleButton Command="EditingCommands.ToggleUnderline" Name="btnUnderline">
+                <Image Height="30" Source="/underline.png"  Width="30"/>
+            </ToggleButton>
+            <Separator/>
+            <Label Content="Выбор шрифта" Height="28" />
+            <ComboBox Name="cmbFontFamily" Width="150" SelectionChanged="cmbFontFamily_SelectionChanged" />
+            <Label Content="Выбор размера" Height="28" />
+            <ComboBox Name="cmbFontSize" Width="50" IsEditable="True" SelectionChanged="cmbFontSize_SelectionChanged" />
+        </ToolBar>
+        <RichTextBox x:Name="rtbEditor" Height="375" SelectionChanged="rtbEditor_SelectionChanged">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+    </StackPanel>
+</Window>
+
